@@ -1,2 +1,2 @@
 Tech Account emails-
-https://github.com/AaqibhafeezKhan/TehchAccountemails/blob/main/README.md
+https://github.com/AaqibhafeezKhan/TechAccountemails/blob/main/README.md
