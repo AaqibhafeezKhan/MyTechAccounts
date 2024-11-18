@@ -4,37 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Accounts</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    h1 {
-      color: #333;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      margin: 10px 0;
-    }
-    a {
-      text-decoration: none;
-      color: #0078d7;
-      font-size: 18px;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        body, h1, h2, h3, p { margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.65; font-size: 16px; background-color: #f4f4f4; margin: 0; padding: 0; }
+        header { background-color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 10px 20px; position: sticky; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: center; padding: 10px 0; }
+        nav a { text-decoration: none; color: #0275d8; padding: 10px 20px; font-weight: 500; }
+        nav a:hover, nav a:focus { background-color: #e9ecef; border-radius: 5px; transition: background-color 0.3s ease-in-out; }
+        .main { padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px; overflow: hidden; }
+        footer { background-color: #0275d8; color: #fff; text-align: center; padding: 20px 10px; font-size: 14px; clear: both; }
+        footer p { margin: 0; }
+        @media (max-width: 768px) { body { padding: 0; } nav { flex-direction: column; } nav a { text-align: center; padding: 10px; margin: 2px 0; } .main { margin: 10px; } }
+    </style>
 </head>
 <body>
   <h1>My Tech Accounts</h1>
