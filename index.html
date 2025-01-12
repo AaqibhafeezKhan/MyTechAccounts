@@ -3,20 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Accounts</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-        body, h1, h2, h3, p { margin: 0; padding: 0; }
-        body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.65; font-size: 16px; background-color: #f4f4f4; margin: 0; padding: 0; }
-        header { background-color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 10px 20px; position: sticky; top: 0; z-index: 1000; }
-        nav { display: flex; justify-content: center; padding: 10px 0; }
-        nav a { text-decoration: none; color: #0275d8; padding: 10px 20px; font-weight: 500; }
-        nav a:hover, nav a:focus { background-color: #e9ecef; border-radius: 5px; transition: background-color 0.3s ease-in-out; }
-        .main { padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px; overflow: hidden; }
-        footer { background-color: #0275d8; color: #fff; text-align: center; padding: 20px 10px; font-size: 14px; clear: both; }
-        footer p { margin: 0; }
-        @media (max-width: 768px) { body { padding: 0; } nav { flex-direction: column; } nav a { text-align: center; padding: 10px; margin: 2px 0; } .main { margin: 10px; } }
-    </style>
+  <title>My Tech Accounts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 2rem;
+      color: #2d3436;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      color: #2d3436;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    ul {
+      max-width: 600px;
+      margin: 0 auto;
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+      padding: 0;
+    }
+
+    li {
+      animation: fadeInUp 0.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    li:nth-child(1) { animation-delay: 0.1s; }
+    li:nth-child(2) { animation-delay: 0.2s; }
+    li:nth-child(3) { animation-delay: 0.3s; }
+    li:nth-child(4) { animation-delay: 0.4s; }
+    li:nth-child(5) { animation-delay: 0.5s; }
+    li:nth-child(6) { animation-delay: 0.6s; }
+    li:nth-child(7) { animation-delay: 0.7s; }
+    li:nth-child(8) { animation-delay: 0.8s; }
+    li:nth-child(9) { animation-delay: 0.9s; }
+
+    a {
+      display: block;
+      padding: 1rem 1.5rem;
+      background: white;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #2d3436;
+      font-weight: 500;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    a::before {
+      content: '';
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+      );
+      transition: 0.5s;
+    }
+
+    a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      background: linear-gradient(45deg, #4CAF50, #45a049);
+      color: white;
+    }
+
+    a:hover::before {
+      left: 100%;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      a {
+        padding: 0.8rem 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <h1>My Tech Accounts</h1>
