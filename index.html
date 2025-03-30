@@ -1,164 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aaqibhafeez Tech Accounts</title>
- <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaqibhafeez Tech Accounts</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        :root {
+            --primary-gradient: linear-gradient(120deg, #6366f1, #a855f7, #ec4899);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+        }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      min-height: 100vh;
-      padding: 2rem;
-      color: white;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    h1 {
-      text-align: center;
-      margin: 2rem 0;
-      font-size: 3rem;
-      text-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      animation: float 3s ease-in-out infinite;
-      background: linear-gradient(45deg, #fff, #e0e0e0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top right, #111827, #0f172a);
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-    ul {
-      max-width: 800px;
-      margin: 2rem auto;
-      list-style: none;
-      display: grid;
-      gap: 1.5rem;
-      padding: 0;
-    }
+        body::before,
+        body::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.5;
+            z-index: -1;
+            animation: float 20s infinite alternate;
+        }
 
-    li {
-      animation: cardEntrance 0.6s ease-out both;
-      transform-origin: center bottom;
-    }
+        body::before {
+            background: #6366f1;
+            top: -100px;
+            left: -100px;
+            animation-delay: -5s;
+        }
 
-    @keyframes cardEntrance {
-      from {
-        opacity: 0;
-        transform: translateY(50px) rotateX(-90deg) scale(0.5);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) rotateX(0) scale(1);
-      }
-    }
+        body::after {
+            background: #ec4899;
+            bottom: -100px;
+            right: -100px;
+        }
 
-    li:nth-child(1) { animation-delay: 0.1s; }
-    li:nth-child(2) { animation-delay: 0.2s; }
-    li:nth-child(3) { animation-delay: 0.3s; }
-    li:nth-child(4) { animation-delay: 0.4s; }
-    li:nth-child(5) { animation-delay: 0.5s; }
-    li:nth-child(6) { animation-delay: 0.6s; }
-    li:nth-child(7) { animation-delay: 0.7s; }
-    li:nth-child(8) { animation-delay: 0.8s; }
-    li:nth-child(9) { animation-delay: 0.9s; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
 
-    a {
-      display: flex;
-      align-items: center;
-      padding: 1.5rem 2rem;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-    }
+        h1 {
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 2rem 0 3rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
 
-    a::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(45deg, rgba(255,255,255,0.15), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
+        h1 span {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
 
-    a:hover {
-      transform: translateY(-5px) scale(1.02);
-      background: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
-    }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
 
-    a:hover::after {
-      opacity: 1;
-    }
+        ul {
+            display: grid;
+            gap: 1.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1100px;
+        }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+        li {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
+        }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+        li:nth-child(1) {
+            animation-delay: 0.1s;
+        }
 
-    @media (max-width: 768px) {
-      body {
-        padding: 1.5rem;
-      }
+        li:nth-child(2) {
+            animation-delay: 0.15s;
+        }
 
-      h1 {
-        font-size: 2.5rem;
-      }
+        li:nth-child(3) {
+            animation-delay: 0.2s;
+        }
 
-      ul {
-        grid-template-columns: 1fr;
-      }
+        li:nth-child(4) {
+            animation-delay: 0.25s;
+        }
 
-      a {
-        padding: 1.25rem;
-        font-size: 0.95rem;
-      }
-    }
+        li:nth-child(5) {
+            animation-delay: 0.3s;
+        }
 
-    @media (min-width: 1024px) {
-      ul {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  </style>
+        li:nth-child(6) {
+            animation-delay: 0.35s;
+        }
+
+        li:nth-child(7) {
+            animation-delay: 0.4s;
+        }
+
+        li:nth-child(8) {
+            animation-delay: 0.45s;
+        }
+
+        li:nth-child(9) {
+            animation-delay: 0.5s;
+        }
+
+        li:nth-child(10) {
+            animation-delay: 0.55s;
+        }
+
+        li:nth-child(11) {
+            animation-delay: 0.6s;
+        }
+
+        li:nth-child(12) {
+            animation-delay: 0.65s;
+        }
+
+        li:nth-child(13) {
+            animation-delay: 0.7s;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            background: var(--glass-bg);
+            border-radius: 16px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        a::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+        }
+
+        a::after {
+            content: '→';
+            font-size: 1.5rem;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--hover-shadow);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        a:hover::before {
+            opacity: 0.15;
+        }
+
+        a:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, 30px);
+            }
+        }
+
+        @media (min-width: 768px) {
+            ul {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            ul {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                margin: 1.5rem 0 2rem;
+            }
+
+            a {
+                padding: 1.25rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            padding-top: 10px;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            animation: scrollIndicator 2s infinite;
+        }
+
+        @keyframes scrollIndicator {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: translateY(10px);
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <h1>Aaqibhafeez Tech Accounts</h1>
-  <ul>
-    <li><a href="https://github.com/AaqibhafeezKhan" target="_blank">GitHub</a></li>
-    <li><a href="https://leetcode.com/u/Aaqibhafeez/" target="_blank">LeetCode</a></li>
-    <li><a href="https://www.freecodecamp.org/AaqibhafeezKhan" target="_blank">FreeCodeCamp</a></li>
-    <li><a href="https://www.hackerrank.com/profile/AaqibhafeezKhan" target="_blank">HackerRank</a></li>
-    <li><a href="https://www.sololearn.com/en/profile/32709822" target="_blank">Sololearn</a></li>
-    <li><a href="https://www.theforage.com/profile/rHHm2ASBs4XerTfmS" target="_blank">Forage</a></li>
-    <li><a href="https://www.kaggle.com/aaqibhafeezkhan" target="_blank">Kaggle</a></li>
-    <li><a href="https://learn.codesignal.com/profile/cm2k71ob60027if0hoh81z0jk" target="_blank">Code Signal</a></li>
-    <li><a href="https://mavenanalytics.io/profile/Aaqibhafeez-Khan/208786550" target="_blank">Maven Analytics</a></li>
-    <li><a href="https://www.hackerearth.com/@aaqibhafeezkhan/" target="_blank">Hacker Earth</a></li>
-    <li><a href="https://www.datacamp.com/portfolio/aaqibhafeezkhan" target="_blank">Data Camp</a></li>
-    <li><a href="https://www.codechef.com/users/blaze_smile_48" target="_blank">CodeChef</a></li>
-    <li><a href="https://www.naukri.com/code360/profile/3ed37a85-deec-49c7-86cb-6b568873a187" target="_blank">Naukri 360</a></li>
-    
-  </ul>
+    <div class="container">
+        <h1><span>Aaqibhafeez Tech Accounts</span></h1>
+        <ul>
+            <li><a href="https://github.com/AaqibhafeezKhan" target="_blank">GitHub</a></li>
+            <li><a href="https://leetcode.com/u/Aaqibhafeez/" target="_blank">LeetCode</a></li>
+            <li><a href="https://www.freecodecamp.org/AaqibhafeezKhan" target="_blank">FreeCodeCamp</a></li>
+            <li><a href="https://www.hackerrank.com/profile/AaqibhafeezKhan" target="_blank">HackerRank</a></li>
+            <li><a href="https://www.sololearn.com/en/profile/32709822" target="_blank">Sololearn</a></li>
+            <li><a href="https://www.theforage.com/profile/rHHm2ASBs4XerTfmS" target="_blank">Forage</a></li>
+            <li><a href="https://www.kaggle.com/aaqibhafeezkhan" target="_blank">Kaggle</a></li>
+            <li><a href="https://learn.codesignal.com/profile/cm2k71ob60027if0hoh81z0jk" target="_blank">Code Signal</a>
+            </li>
+            <li><a href="https://mavenanalytics.io/profile/Aaqibhafeez-Khan/208786550" target="_blank">Maven
+                    Analytics</a></li>
+            <li><a href="https://www.hackerearth.com/@aaqibhafeezkhan/" target="_blank">Hacker Earth</a></li>
+            <li><a href="https://www.datacamp.com/portfolio/aaqibhafeezkhan" target="_blank">Data Camp</a></li>
+            <li><a href="https://www.codechef.com/users/blaze_smile_48" target="_blank">CodeChef</a></li>
+            <li><a href="https://www.naukri.com/code360/profile/3ed37a85-deec-49c7-86cb-6b568873a187"
+                    target="_blank">Naukri 360</a></li>
+        </ul>
+    </div>
+    <!-- Open when list is bigger <div class="scroll-indicator"></div> -->
 </body>
+
 </html>
