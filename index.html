@@ -1,348 +1,481 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aaqibhafeez Tech Accounts</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>aaqibhafeez — profiles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:      #0e0e0e;
+      --surface: #161616;
+      --border:  #2a2a2a;
+      --text:    #e8e8e8;
+      --muted:   #5a5a5a;
+      --dim:     #3a3a3a;
+      --tag-bg:  #1e1e1e;
+      --hover-bg:#1a1a1a;
+      --green:   #4ade80;
+      --yellow:  #facc15;
+    }
+    [data-theme="light"] {
+      --bg:      #f5f5f0;
+      --surface: #eaeae5;
+      --border:  #d0d0c8;
+      --text:    #111111;
+      --muted:   #888880;
+      --dim:     #c0c0b8;
+      --tag-bg:  #e8e8e0;
+      --hover-bg:#e0e0d8;
+      --green:   #16a34a;
+      --yellow:  #ca8a04;
+    }
 
-        :root {
-            --primary-gradient: linear-gradient(120deg, #6366f1, #a855f7, #ec4899);
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            --hover-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
-        }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 14px; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background 0.2s, color 0.2s;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: radial-gradient(circle at top right, #111827, #0f172a);
-            background-attachment: fixed;
-            color: white;
-            min-height: 100vh;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow-x: hidden;
-        }
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
 
-        body::before,
-        body::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.5;
-            z-index: -1;
-            animation: float 20s infinite alternate;
-        }
+    header {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+    }
 
-        body::before {
-            background: #6366f1;
-            top: -100px;
-            left: -100px;
-            animation-delay: -5s;
-        }
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
 
-        body::after {
-            background: #ec4899;
-            bottom: -100px;
-            right: -100px;
-        }
+    .name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .name span { color: var(--muted); font-weight: 400; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
+    .tagline {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
 
-        h1 {
-            text-align: center;
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin: 2rem 0 3rem;
-            position: relative;
-            display: inline-block;
-            width: 100%;
-        }
+    .theme-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 0.7rem;
+      padding: 0.28rem 0.65rem;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .theme-btn:hover { color: var(--text); border-color: var(--dim); }
 
-        h1 span {
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            display: inline-block;
-        }
+    .stats {
+      font-size: 0.7rem;
+      color: var(--muted);
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .stats b { color: var(--text); font-weight: 500; }
 
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--primary-gradient);
-            border-radius: 2px;
-        }
+    .controls {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
 
-        ul {
-            display: grid;
-            gap: 1.5rem;
-            list-style: none;
-            padding: 0;
-            margin: 0 auto;
-            width: 100%;
-            max-width: 1100px;
-        }
+    .search-wrap { position: relative; }
 
-        li {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s forwards;
-        }
+    .search-prefix {
+      position: absolute;
+      left: 0.7rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 0.75rem;
+      pointer-events: none;
+      user-select: none;
+    }
 
-        li:nth-child(1) {
-            animation-delay: 0.1s;
-        }
+    #search {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.55rem 0.7rem 0.55rem 2.4rem;
+      font-family: inherit;
+      font-size: 0.78rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    #search:focus { border-color: var(--dim); }
+    #search::placeholder { color: var(--muted); }
 
-        li:nth-child(2) {
-            animation-delay: 0.15s;
-        }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
 
-        li:nth-child(3) {
-            animation-delay: 0.2s;
-        }
+    .filter-btn {
+      font-family: inherit;
+      font-size: 0.68rem;
+      padding: 0.22rem 0.6rem;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .filter-btn:hover { color: var(--text); border-color: var(--dim); }
+    .filter-btn.active { color: var(--text); border-color: var(--text); }
 
-        li:nth-child(4) {
-            animation-delay: 0.25s;
-        }
+    .list-header {
+      display: grid;
+      grid-template-columns: 1fr 80px 28px 28px;
+      padding: 0.35rem 0.6rem;
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0.15rem;
+    }
 
-        li:nth-child(5) {
-            animation-delay: 0.3s;
-        }
+    .platform-row {
+      display: grid;
+      grid-template-columns: 1fr 80px 28px 28px;
+      align-items: center;
+      padding: 0.5rem 0.6rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.1s;
+      animation: fadeIn 0.25s both;
+    }
+    .platform-row:hover { background: var(--hover-bg); }
+    .platform-row.pinned-row { border-left: 2px solid var(--yellow); padding-left: calc(0.6rem - 2px); }
 
-        li:nth-child(6) {
-            animation-delay: 0.35s;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-        li:nth-child(7) {
-            animation-delay: 0.4s;
-        }
+    .row-main {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      min-width: 0;
+    }
 
-        li:nth-child(8) {
-            animation-delay: 0.45s;
-        }
+    .row-index {
+      font-size: 0.65rem;
+      color: var(--muted);
+      width: 1.4rem;
+      text-align: right;
+      flex-shrink: 0;
+    }
 
-        li:nth-child(9) {
-            animation-delay: 0.5s;
-        }
+    .row-text { min-width: 0; }
 
-        li:nth-child(10) {
-            animation-delay: 0.55s;
-        }
+    .row-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-        li:nth-child(11) {
-            animation-delay: 0.6s;
-        }
+    .row-desc {
+      font-size: 0.68rem;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 0.1rem;
+    }
 
-        li:nth-child(12) {
-            animation-delay: 0.65s;
-        }
+    .row-cat {
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
 
-        li:nth-child(13) {
-            animation-delay: 0.7s;
-        }
+    .act-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--dim);
+      font-family: inherit;
+      font-size: 0.82rem;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+      transition: color 0.12s, background 0.12s;
+      text-decoration: none;
+      position: relative;
+    }
+    .act-btn:hover { color: var(--text); background: var(--border); }
+    .act-btn.pin-active { color: var(--yellow); }
+    .act-btn.copied { color: var(--green); }
 
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.5rem 2rem;
-            background: var(--glass-bg);
-            border-radius: 16px;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--card-shadow);
-            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
+    .act-btn::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.62rem;
+      padding: 0.18rem 0.45rem;
+      border-radius: 2px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.12s;
+    }
+    .act-btn:hover::after { opacity: 1; }
 
-        a::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: -1;
-        }
+    .empty {
+      padding: 2.5rem 0.6rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
 
-        a::after {
-            content: '→';
-            font-size: 1.5rem;
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: all 0.3s ease;
-        }
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.68rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
 
-        a:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: var(--hover-shadow);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        a:hover::before {
-            opacity: 0.15;
-        }
-
-        a:hover::after {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
-
-            50% {
-                transform: translate(30px, 30px);
-            }
-        }
-
-        @media (min-width: 768px) {
-            ul {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1200px) {
-            ul {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 767px) {
-            body {
-                padding: 1.5rem 1rem;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-                margin: 1.5rem 0 2rem;
-            }
-
-            a {
-                padding: 1.25rem 1.5rem;
-                font-size: 1rem;
-            }
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            padding-top: 10px;
-        }
-
-        .scroll-indicator::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: white;
-            border-radius: 50%;
-            animation: scrollIndicator 2s infinite;
-        }
-
-        @keyframes scrollIndicator {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            50% {
-                opacity: 0.3;
-                transform: translateY(10px);
-            }
-        }
-    </style>
+    @media (max-width: 540px) {
+      .page { padding: 2rem 1rem 4rem; }
+      .list-header,
+      .platform-row { grid-template-columns: 1fr 28px 28px; }
+      .row-cat { display: none; }
+      .list-header .col-cat { display: none; }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <h1><span>Aaqibhafeez Tech Accounts</span></h1>
-        <ul>
-            <li><a href="https://github.com/AaqibhafeezKhan" target="_blank">GitHub</a></li>
-            <li><a href="https://leetcode.com/u/Aaqibhafeez/" target="_blank">LeetCode</a></li>
-            <li><a href="https://www.freecodecamp.org/AaqibhafeezKhan" target="_blank">FreeCodeCamp</a></li>
-            <li><a href="https://www.hackerrank.com/profile/AaqibhafeezKhan" target="_blank">HackerRank</a></li>
-            <li><a href="https://www.sololearn.com/en/profile/32709822" target="_blank">Sololearn</a></li>
-            <li><a href="https://www.theforage.com/profile/rHHm2ASBs4XerTfmS" target="_blank">Forage</a></li>
-            <li><a href="https://www.kaggle.com/aaqibhafeezkhan" target="_blank">Kaggle</a></li>
-            <li><a href="https://learn.codesignal.com/profile/cm2k71ob60027if0hoh81z0jk" target="_blank">Code Signal</a>
-            </li>
-            <li><a href="https://mavenanalytics.io/profile/Aaqibhafeez-Khan/208786550" target="_blank">Maven
-                    Analytics</a></li>
-            <li><a href="https://www.hackerearth.com/@aaqibhafeezkhan/" target="_blank">Hacker Earth</a></li>
-            <li><a href="https://www.datacamp.com/portfolio/aaqibhafeezkhan" target="_blank">Data Camp</a></li>
-            <li><a href="https://www.codechef.com/users/aaqibhhkhan" target="_blank">CodeChef</a></li>
-            <li><a href="https://www.codeforces.com/profile/AaqibhafeezKhan" target="_blank">CodeForces</a></li>
-            <li><a href="https://www.naukri.com/code360/profile/3ed37a85-deec-49c7-86cb-6b568873a187"
-                    target="_blank">Naukri 360</a></li>
-            <li><a href="https://www.geeksforgeeks.org/user/aaqibhafeezkhan/" target="_blank">GeeksforGeeks</a></li>
-            <li><a href="https://www.upwork.com/freelancers/~01cf658afd0a6ec8ae" target="_blank">Upwork</a></li>
-            <li><a href="https://app.mulearn.org/profile/aaqibhafeezkhan@mulearn" target="_blank">mulearn</a></li>
-            <li><a href="https://www.interviewbit.com/profile/aaqibhafeez-khan" target="_blank">Interviewbit</a></li>
-            <li><a href="https://g.dev/aaqibhafeez-khan" target="_blank">Google developers</a></li>
-            <li><a href="https://learn.microsoft.com/en-us/aaqibhafeezkhan-6989" target="_blank">Microsoft Learn</a></li>
-            <li><a href="https://www.futurelearn.com/profiles/22066310" target="_blank">FutureLearn</a></li>
-<li><a href="https://profiles.topcoder.com/aaqibhafeezkhan" target="_blank">Top Coder</a></li>
-        </ul>
-    </div>
-    <!-- Open when list is bigger <div class="scroll-indicator"></div> -->
-</body>
+<div class="page">
 
+  <header>
+    <div class="header-top">
+      <div>
+        <div class="name">aaqibhafeez <span>/ profiles</span></div>
+        <div class="tagline">all my coding, learning &amp; freelance accounts — one place</div>
+      </div>
+      <button class="theme-btn" id="themeBtn">[ light ]</button>
+    </div>
+    <div class="stats">
+      <span>total <b id="statTotal">22</b></span>
+      <span>showing <b id="statVisible">22</b></span>
+      <span>pinned <b id="statPinned">0</b></span>
+      <span>categories <b>5</b></span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <span class="search-prefix">/search</span>
+      <input id="search" type="text" placeholder="platform, category, keyword…" autocomplete="off" spellcheck="false" />
+    </div>
+    <div class="filters" id="filters"></div>
+  </div>
+
+  <div class="list-header">
+    <div>platform</div>
+    <div class="col-cat">category</div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <div id="list"></div>
+
+  <footer>
+    <span>aaqibhafeez khan</span>
+    <span id="clock"></span>
+  </footer>
+</div>
+
+<script>
+const platforms = [
+  { name:"GitHub",          url:"https://github.com/AaqibhafeezKhan",                                           cat:"coding",    desc:"repos and contributions" },
+  { name:"LeetCode",        url:"https://leetcode.com/u/Aaqibhafeez/",                                          cat:"coding",    desc:"dsa practice and contests" },
+  { name:"FreeCodeCamp",    url:"https://www.freecodecamp.org/AaqibhafeezKhan",                                 cat:"learning",  desc:"web dev certifications" },
+  { name:"HackerRank",      url:"https://www.hackerrank.com/profile/AaqibhafeezKhan",                           cat:"coding",    desc:"skill badges and certs" },
+  { name:"Sololearn",       url:"https://www.sololearn.com/en/profile/32709822",                                cat:"learning",  desc:"interactive courses" },
+  { name:"Forage",          url:"https://www.theforage.com/profile/rHHm2ASBs4XerTfmS",                         cat:"learning",  desc:"virtual work experience" },
+  { name:"Kaggle",          url:"https://www.kaggle.com/aaqibhafeezkhan",                                       cat:"data",      desc:"notebooks and competitions" },
+  { name:"Code Signal",     url:"https://learn.codesignal.com/profile/cm2k71ob60027if0hoh81z0jk",               cat:"coding",    desc:"assessments and benchmarks" },
+  { name:"Maven Analytics", url:"https://mavenanalytics.io/profile/Aaqibhafeez-Khan/208786550",                cat:"data",      desc:"analytics portfolio" },
+  { name:"Hacker Earth",    url:"https://www.hackerearth.com/@aaqibhafeezkhan/",                                cat:"coding",    desc:"hackathons and sprints" },
+  { name:"Data Camp",       url:"https://www.datacamp.com/portfolio/aaqibhafeezkhan",                          cat:"data",      desc:"data science tracks" },
+  { name:"CodeChef",        url:"https://www.codechef.com/users/aaqibhhkhan",                                   cat:"coding",    desc:"competitive contests" },
+  { name:"CodeForces",      url:"https://www.codeforces.com/profile/AaqibhafeezKhan",                           cat:"coding",    desc:"algorithm rating" },
+  { name:"Naukri 360",      url:"https://www.naukri.com/code360/profile/3ed37a85-deec-49c7-86cb-6b568873a187", cat:"coding",    desc:"code360 problems" },
+  { name:"GeeksforGeeks",   url:"https://www.geeksforgeeks.org/user/aaqibhafeezkhan/",                          cat:"learning",  desc:"cs fundamentals streak" },
+  { name:"Upwork",          url:"https://www.upwork.com/freelancers/~01cf658afd0a6ec8ae",                       cat:"freelance", desc:"freelance projects" },
+  { name:"mulearn",         url:"https://app.mulearn.org/profile/aaqibhafeezkhan@mulearn",                      cat:"learning",  desc:"community karma" },
+  { name:"Interviewbit",    url:"https://www.interviewbit.com/profile/aaqibhafeez-khan",                        cat:"coding",    desc:"interview prep" },
+  { name:"Google Devs",     url:"https://g.dev/aaqibhafeez-khan",                                               cat:"learning",  desc:"badges and codelabs" },
+  { name:"Microsoft Learn", url:"https://learn.microsoft.com/en-us/aaqibhafeezkhan-6989",                      cat:"learning",  desc:"certs and learning paths" },
+  { name:"FutureLearn",     url:"https://www.futurelearn.com/profiles/22066310",                                cat:"learning",  desc:"university-backed courses" },
+  { name:"Top Coder",       url:"https://profiles.topcoder.com/aaqibhafeezkhan",                                cat:"coding",    desc:"algorithm challenges" },
+];
+
+const categories = ["all", ...new Set(platforms.map(p => p.cat))];
+let activeFilter = "all";
+let query = "";
+let pinned = JSON.parse(localStorage.getItem("ahk_pinned") || "[]");
+
+const themeBtn = document.getElementById("themeBtn");
+let isDark = true;
+themeBtn.addEventListener("click", () => {
+  isDark = !isDark;
+  document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+  themeBtn.textContent = isDark ? "[ light ]" : "[ dark ]";
+});
+
+function tick() {
+  const n = new Date();
+  document.getElementById("clock").textContent =
+    n.toLocaleTimeString([], { hour:"2-digit", minute:"2-digit", second:"2-digit", hour12:false });
+}
+tick(); setInterval(tick, 1000);
+
+const filtersEl = document.getElementById("filters");
+categories.forEach(cat => {
+  const btn = document.createElement("button");
+  btn.className = "filter-btn" + (cat === "all" ? " active" : "");
+  btn.textContent = cat;
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeFilter = cat;
+    render();
+  });
+  filtersEl.appendChild(btn);
+});
+
+document.getElementById("search").addEventListener("input", e => {
+  query = e.target.value.toLowerCase();
+  render();
+});
+
+function copyURL(url, btn) {
+  navigator.clipboard.writeText(url).then(() => {
+    btn.classList.add("copied");
+    btn.setAttribute("data-tip", "copied!");
+    setTimeout(() => { btn.classList.remove("copied"); btn.setAttribute("data-tip", "copy url"); }, 1600);
+  });
+}
+
+function togglePin(name) {
+  const i = pinned.indexOf(name);
+  if (i === -1) pinned.push(name); else pinned.splice(i, 1);
+  localStorage.setItem("ahk_pinned", JSON.stringify(pinned));
+  render();
+}
+
+function render() {
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  let filtered = platforms.filter(p => {
+    const matchCat = activeFilter === "all" || p.cat === activeFilter;
+    const matchQ   = !query || p.name.toLowerCase().includes(query) ||
+                     p.cat.includes(query) || p.desc.includes(query);
+    return matchCat && matchQ;
+  });
+
+  filtered.sort((a, b) => (pinned.includes(a.name) ? 0 : 1) - (pinned.includes(b.name) ? 0 : 1));
+
+  document.getElementById("statVisible").textContent = filtered.length;
+  document.getElementById("statTotal").textContent   = platforms.length;
+  document.getElementById("statPinned").textContent  = pinned.length;
+
+  if (!filtered.length) {
+    list.innerHTML = `<div class="empty">no results for "${query || activeFilter}"</div>`;
+    return;
+  }
+
+  filtered.forEach((p, i) => {
+    const isPinned = pinned.includes(p.name);
+    const row = document.createElement("div");
+    row.className = "platform-row" + (isPinned ? " pinned-row" : "");
+    row.style.animationDelay = `${i * 0.02}s`;
+
+    const main = document.createElement("div");
+    main.className = "row-main";
+    main.innerHTML = `
+      <span class="row-index">${String(i + 1).padStart(2, "0")}</span>
+      <div class="row-text">
+        <div class="row-name">${p.name}</div>
+        <div class="row-desc">${p.desc}</div>
+      </div>`;
+
+    const cat = document.createElement("div");
+    cat.className = "row-cat";
+    cat.textContent = p.cat;
+
+    const pinBtn = document.createElement("button");
+    pinBtn.className = "act-btn" + (isPinned ? " pin-active" : "");
+    pinBtn.setAttribute("data-tip", isPinned ? "unpin" : "pin");
+    pinBtn.textContent = isPinned ? "★" : "☆";
+    pinBtn.addEventListener("click", () => togglePin(p.name));
+
+    const visitBtn = document.createElement("a");
+    visitBtn.className = "act-btn";
+    visitBtn.setAttribute("data-tip", "open");
+    visitBtn.href = p.url;
+    visitBtn.target = "_blank";
+    visitBtn.rel = "noopener";
+    visitBtn.textContent = "↗";
+
+    row.appendChild(main);
+    row.appendChild(cat);
+    row.appendChild(pinBtn);
+    row.appendChild(visitBtn);
+    list.appendChild(row);
+  });
+}
+
+render();
+</script>
+</body>
 </html>
